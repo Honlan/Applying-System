@@ -8,12 +8,11 @@ class FormController extends Controller {
 
     public function handle(){
     	if (IS_POST) {
-    		$data = array('name'=>I('name'),'phone'=>I('mobile'),'email'=>I('email'),'company'=>I('company'),'position'=>I('position'));
-    		print_r($data);
+    		$data = array('name'=>I('name'),'mobile'=>I('mobile'),'email'=>I('email'),'company'=>I('company'),'position'=>I('position'),'timestamp'=>time());
     		M('application')->data($data)->add();
-    		echo "报名成功！";
+            echo json_encode(array("ok" => "1"));
     	} else {
-    		$this->redirect('Form/index');
+            echo json_encode(array("ok" => "0"));
     	}
     }
 }

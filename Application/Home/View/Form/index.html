@@ -5,7 +5,7 @@
     <meta charset='utf8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>CBI活动报名系统</title>
+    <title>“成就中国”高峰论坛报名</title>
     <meta name='description' content='' />
     <meta name='keywords' content='' />
     <meta name='author' content='hlzhang' />
@@ -22,39 +22,153 @@ form {
 form .input-group {
 	margin-bottom: 15px;
 }
-form button {
+form #apply {
 	float: right;
 	margin-top: 20px;
 	width: 100%;
 }
+#success {
+    text-align: center;
+    position: absolute;
+    width: 120px;
+    left: 50%;
+    margin-left: -60px;
+    background-color: #F3F3F3;
+    color: #6D3030;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    top: 320px;
+    z-index: 999;
+    opacity: 0;
+}
+#success p {
+    margin-bottom: 0;
+}
+#success span {
+    margin-right: 8px;
+}
 </style>
 
 <body>
-    <form class="form" method="post" action="{:U('Form/handle')}">
+    <form>
         <div class="form-group">
         	<div class="input-group">
         		<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-        		<input type="text" class="form-control" name="name" placeholder="用户名">
+        		<input type="text" class="form-control" name="name" placeholder="姓名 Name">
             </div>
             <div class="input-group">
         		<div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></div>
-        		<input type="tel" class="form-control" name="mobile" placeholder="手机">
+        		<input type="tel" class="form-control" name="mobile" placeholder="手机 Mobile">
             </div>
             <div class="input-group">
         		<div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-        		<input type="email" class="form-control" name="email" placeholder="邮箱">
+        		<input type="email" class="form-control" name="email" placeholder="邮箱 Email">
             </div>
             <div class="input-group">
         		<div class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></div>
-        		<input type="text" class="form-control" name="company" placeholder="公司">
+        		<input type="text" class="form-control" name="company" placeholder="公司 Company">
             </div>
             <div class="input-group">
         		<div class="input-group-addon"><span class="glyphicon glyphicon-flag"></span></div>
-        		<input type="text" class="form-control" name="position" placeholder="职位">
+        		<input type="text" class="form-control" name="position" placeholder="职位 Position">
             </div>
-            <button type="submit" class="btn btn-primary">立即报名</button>
+            <span id="apply" class="btn btn-primary disabled">立即报名</span>
         </div>
     </form>
+    <div id="success">
+        <p><span class="glyphicon glyphicon-ok"></span>报名成功</p>
+    </div>
 </body>
+<script>
+$(document).ready(function(){
+    var name = false, mobile = false, email = false, company = false, position = false;
+    $('form input[name="name"]').keyup(function(){
+        if ($(this).val() != '') {
+            name = true;
+        } else {
+            name = false;
+        }
+        if (name && mobile && email && company && position) {
+            $('form button').removeClass('disabled');
+        } else {
+            $('form button').addClass('disabled');
+        }
+    });
+    $('form input[name="mobile"]').keyup(function(){
+        if ($(this).val() != '') {
+            mobile = true;
+        } else {
+            mobile = false;
+        }
+        if (name && mobile && email && company && position) {
+            $('form button').removeClass('disabled');
+        } else {
+            $('form button').addClass('disabled');
+        }
+    });
+    $('form input[name="email"]').keyup(function(){
+        if ($(this).val() != '') {
+            email = true;
+        } else {
+            email = false;
+        }
+        if (name && mobile && email && company && position) {
+            $('form button').removeClass('disabled');
+        } else {
+            $('form button').addClass('disabled');
+        }
+    });
+    $('form input[name="company"]').keyup(function(){
+        if ($(this).val() != '') {
+            company = true;
+        } else {
+            company = false;
+        }
+        if (name && mobile && email && company && position) {
+            $('form button').removeClass('disabled');
+        } else {
+            $('form button').addClass('disabled');
+        }
+    });
+    $('form input[name="position"]').keyup(function(){
+        if ($(this).val() != '') {
+            position = true;
+        } else {
+            position = false;
+        }
+        if (name && mobile && email && company && position) {
+            $('form #apply').removeClass('disabled');
+        } else {
+            $('form #apply').addClass('disabled');
+        }
+    });
+
+    $('form #apply').click(function(){
+        $.ajax({
+            url: "{:U('Form/handle')}",
+            type: 'POST',
+            data: {
+                name: $('form input[name="name"]').val(),
+                mobile: $('form input[name="mobile"]').val(),
+                email: $('form input[name="email"]').val(),
+                company: $('form input[name="company"]').val(),
+                position: $('form input[name="position"]').val()
+            },
+            dataType: 'json',
+            error: function() {},
+            success: function(data){}
+        });
+        $('#success').animate({'opacity':1,'top':'290px'},300,function(){
+            setTimeout(function(){
+                $('#success').animate({'opacity':0,'top':'260px'},300,function(){
+                    $('#success').css('top','320px');
+                });
+            },500);
+        });
+    });
+});
+</script>
 
 </html></h1>
