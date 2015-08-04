@@ -1,2 +1,2 @@
 # Applying-System
-An applying system built with flask
+An applying system built with thinkphp
