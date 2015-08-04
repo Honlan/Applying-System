@@ -48,7 +48,7 @@ class IndexController extends CommonController {
     	$qrcode = $application['qrcode'];
     	$email = $application['email'];
     	$info = M('email')->select()[0];
-    	SendMail($email, $info['admitTitle'], $info['admitContent'].U('Index/qrcode',array('img'=>$picname),false,true));
+    	SendMail($email, $info['admitTitle'], $info['admitContent'].U('Index/qrcode',array('img'=>$qrcode),false,true));
     	$this->redirect('index');
     }
 
