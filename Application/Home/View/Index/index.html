@@ -70,6 +70,12 @@ header ul li {
     margin-bottom: 50px;
     border-radius: 10px;
 }
+#main #email_info {
+    border: 1px solid #ccc;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
 
 footer.well {
     margin-bottom: 0;
@@ -226,6 +232,28 @@ footer.well p {
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div id="email_info">
+                    <h4>编辑邮件选项</h4>
+                    <form method="post" action="{:U('Index/editEmail')}">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-ok"></span></div>
+                                <input type="text" class="form-control" name="admitTitle" placeholder="通过时的标题" value="{$emailSetting['admitTitle']}">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-ok"></span></div>
+                                <textarea class="form-control" name="admitContent" placeholder="通过时的内容" rows='8'>{$emailSetting.admitContent}</textarea>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></div>
+                                <input type="text" class="form-control" name="refuseTitle" placeholder="拒绝时的标题" value="{$emailSetting['refuseTitle']}">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></div>
+                                <textarea class="form-control" name="refuseContent" placeholder="拒绝时的内容" rows='8'>{$emailSetting.refuseContent}</textarea>
+                            </div>
+                            <button class="btn btn-primary">保存选项</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
