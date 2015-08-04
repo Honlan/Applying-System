@@ -1,7 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-class IndexController extends CommonController {
+class HtmlController extends Controller {
     public function index(){
     	$this->display();
     }
