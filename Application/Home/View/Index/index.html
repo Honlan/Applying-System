@@ -58,6 +58,17 @@ header ul li {
 #main form .input-group {
     margin-bottom: 20px;
 }
+#main #applications {
+    position: relative;
+}
+#main #applications #export_url {
+    position: absolute;
+    right: 30px;
+    top: 55px;
+}
+#main #applications #export_url a {
+    margin-left: 10px;
+}
 
 #main #change_pwd {
     border: 1px solid #ccc;
@@ -95,6 +106,10 @@ footer.well p {
     </header>
     <div id="main">
         <div id="applications">
+            <div id="export_url">
+                <a href="{:U('Index/exportExcel')}" class="btn btn-primary">导出xls</a>
+                <a href="{:U('Index/exportCsv')}" class="btn btn-success">导出csv</a>
+            </div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#wait" aria-controls="wait" role="tab" data-toggle="tab">待审核</a></li>
