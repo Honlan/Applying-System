@@ -59,8 +59,25 @@ class IndexController extends CommonController {
     }
 
     public function addApplication(){
-    	$data = array('name'=>I('name'),'mobile'=>I('mobile'),'email'=>I('email'),'company'=>I('company'),'position'=>I('position'),'timestamp'=>time(),'dealtime'=>time(),'admitted'=>1);
+        $timestamp = time();
+    	$data = array('name'=>I('name'),'mobile'=>I('mobile'),'email'=>I('email'),'company'=>I('company'),'position'=>I('position'),'timestamp'=>$timestamp,'dealtime'=>$timestamp,'admitted'=>1);
     	M('application')->data($data)->add();
+        $application = M('application')->where(array('name'=>I('name'),'mobile'=>I('mobile'),'email'=>I('email'),'company'=>I('company'),'position'=>I('position'),'timestamp'=>$timestamp,'dealtime'=>$timestamp,'admitted'=>1))->select()[0];
+        $email = $application['email'];
+        $info = M('email')->select()[0];
+        vendor("phpqrcode.phpqrcode");
+        $value = $application['id']."\n\n".$application['name']."\n\n".$application['mobile']."\n\n".$application['email']."\n\n".$application['company']."\n\n".$application['position'];
+        $key = '';
+        for ($i=0; $i < 10; $i++) { 
+            $key .= rand(0,9);
+        }
+        $picname = time().$key; 
+        $filename = 'Public/'.$picname.'.png'; 
+        $errorCorrectionLevel = "L"; 
+        $matrixPointSize = "6"; 
+        \QRcode::png($value, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
+        SendMail($email, $info['admitTitle'], $info['admitContent'].U('Index/qrcode',array('img'=>$picname),false,true));
+        M('application')->where(array('id'=>$application['id']))->save(array('qrcode'=>$picname));
     	$this->redirect('index');
     }
 
