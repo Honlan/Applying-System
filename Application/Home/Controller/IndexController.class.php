@@ -22,7 +22,7 @@ class IndexController extends CommonController {
     		$key .= rand(0,9);
     	}
     	$picname = time().$key; 
-    	$filename = 'Public/'.$picname.'.png'; 
+    	$filename = 'Public/img/'.$picname.'.png'; 
     	$errorCorrectionLevel = "L"; 
     	$matrixPointSize = "6"; 
     	\QRcode::png($value, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
@@ -72,7 +72,7 @@ class IndexController extends CommonController {
             $key .= rand(0,9);
         }
         $picname = time().$key; 
-        $filename = 'Public/'.$picname.'.png'; 
+        $filename = 'Public/img/'.$picname.'.png'; 
         $errorCorrectionLevel = "L"; 
         $matrixPointSize = "6"; 
         \QRcode::png($value, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
