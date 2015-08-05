@@ -49,6 +49,15 @@ form #apply {
 #success span {
     margin-right: 8px;
 }
+#info {
+    margin: 30px 40px;
+    padding: 15px 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    text-indent: 2em;
+    border-radius: 10px;
+    display: none;
+}
 </style>
 
 <body>
@@ -79,6 +88,10 @@ form #apply {
     </form>
     <div id="success">
         <p><span class="glyphicon glyphicon-ok"></span>报名成功</p>
+    </div>
+    <div id="info">
+        <p>您的报名信息已提交，待组委会审核通过后，将发送确认信息致您的邮箱。谢谢！</p>
+        <p>Your information has been submitted successfully. After approval you will receive the confirmation mail. Thanks</p>
     </div>
 </body>
 <script>
@@ -167,6 +180,8 @@ $(document).ready(function(){
                 });
             },500);
         });
+        $('form #apply').hide();
+        $('#info').show();
     });
 });
 </script>
