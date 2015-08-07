@@ -194,7 +194,7 @@ class IndexController extends CommonController {
         echo $str;
     }
 
-    public function delelte(){
+    public function delete(){
         $id = I('aid');
         M('application')->where(array('id'=>$id))->delete();
         $this->redirect('index');
