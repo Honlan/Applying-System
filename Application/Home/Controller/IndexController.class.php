@@ -16,6 +16,17 @@ class IndexController extends CommonController {
     	$application = M('application')->where(array('id'=>$aid))->select()[0];
     	$email = $application['email'];
     	$info = M('email')->select()[0];
+        $admitContent = $info['admitContent'];
+        if(count(explode("\n", $admitContent)) == 1 ){
+            $admitContent = explode("\r", $admitContent);
+        } else {
+            $admitContent = explode("\n", $admitContent);
+        }
+        $temp = '';
+        foreach ($admitContent as $key => $value) {
+            $temp .= $value."<br/>";
+        }
+        $admitContent = $temp;
     	vendor("phpqrcode.phpqrcode");
     	$value = $application['id']."\n\n".$application['name']."\n\n".$application['mobile']."\n\n".$application['email']."\n\n".$application['company']."\n\n".$application['position'];
     	$key = '';
@@ -27,7 +38,8 @@ class IndexController extends CommonController {
     	$errorCorrectionLevel = "L"; 
     	$matrixPointSize = "6"; 
     	\QRcode::png($value, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
-    	SendMail($email, $info['admitTitle'], $info['admitContent'].U('Index/qrcode',array('img'=>$picname),false,true));
+        $admitContent .= U('Index/qrcode',array('img'=>$picname),false,true);
+    	SendMail($email, $info['admitTitle'], $admitContent);
     	M('application')->where(array('id'=>$aid))->save(array('admitted'=>1,'dealtime'=>time(),'qrcode'=>$picname));
     	$this->redirect('index');
     }
@@ -37,8 +49,19 @@ class IndexController extends CommonController {
     	M('application')->where(array('id'=>$aid))->save(array('admitted'=>0,'dealtime'=>time()));
     	$application = M('application')->where(array('id'=>$aid))->select()[0];
     	$info = M('email')->select()[0];
+        $refuseContent = $info['refuseContent'];
+        if(count(explode("\n", $refuseContent)) == 1 ){
+            $refuseContent = explode("\r", $refuseContent);
+        } else {
+            $refuseContent = explode("\n", $refuseContent);
+        }
+        $temp = '';
+        foreach ($refuseContent as $key => $value) {
+            $temp .= $value."<br/>";
+        }
+        $refuseContent = $temp;
     	$email = $application['email'];
-    	SendMail($email, $info['refuseTitle'], $refuse['refuseContent']);
+    	SendMail($email, $info['refuseTitle'], $refuseContent);
     	$this->redirect('index');
     }
 
@@ -49,7 +72,19 @@ class IndexController extends CommonController {
     	$qrcode = $application['qrcode'];
     	$email = $application['email'];
     	$info = M('email')->select()[0];
-    	SendMail($email, $info['admitTitle'], $info['admitContent'].U('Index/qrcode',array('img'=>$qrcode),false,true));
+        $admitContent = $info['admitContent'];
+        if(count(explode("\n", $admitContent)) == 1 ){
+            $admitContent = explode("\r", $admitContent);
+        } else {
+            $admitContent = explode("\n", $admitContent);
+        }
+        $temp = '';
+        foreach ($admitContent as $key => $value) {
+            $temp .= $value."<br/>";
+        }
+        $admitContent = $temp;
+        $admitContent .= U('Index/qrcode',array('img'=>$qrcode),false,true);
+    	SendMail($email, $info['admitTitle'], $admitContent);
     	$this->redirect('index');
     }
 
@@ -66,6 +101,17 @@ class IndexController extends CommonController {
         $application = M('application')->where(array('name'=>I('name'),'mobile'=>I('mobile'),'email'=>I('email'),'company'=>I('company'),'position'=>I('position'),'timestamp'=>$timestamp,'dealtime'=>$timestamp,'admitted'=>1))->select()[0];
         $email = $application['email'];
         $info = M('email')->select()[0];
+        $admitContent = $info['admitContent'];
+        if(count(explode("\n", $admitContent)) == 1 ){
+            $admitContent = explode("\r", $admitContent);
+        } else {
+            $admitContent = explode("\n", $admitContent);
+        }
+        $temp = '';
+        foreach ($admitContent as $key => $value) {
+            $temp .= $value."<br/>";
+        }
+        $admitContent = $temp;
         vendor("phpqrcode.phpqrcode");
         $value = $application['id']."\n\n".$application['name']."\n\n".$application['mobile']."\n\n".$application['email']."\n\n".$application['company']."\n\n".$application['position'];
         $key = '';
@@ -77,7 +123,8 @@ class IndexController extends CommonController {
         $errorCorrectionLevel = "L"; 
         $matrixPointSize = "6"; 
         \QRcode::png($value, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
-        SendMail($email, $info['admitTitle'], $info['admitContent'].U('Index/qrcode',array('img'=>$picname),false,true));
+        $admitContent .= U('Index/qrcode',array('img'=>$picname),false,true);
+        SendMail($email, $info['admitTitle'], $admitContent);
         M('application')->where(array('id'=>$application['id']))->save(array('qrcode'=>$picname));
     	$this->redirect('index');
     }
