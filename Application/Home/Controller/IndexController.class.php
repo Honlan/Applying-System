@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+header("Content-type: text/html; charset=utf-8");
 class IndexController extends CommonController {
     public function index(){
     	$this->wait = M('application')->where(array('admitted'=>2))->order('timestamp desc')->select();
