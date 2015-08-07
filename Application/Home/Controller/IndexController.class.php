@@ -193,4 +193,10 @@ class IndexController extends CommonController {
         header('Pragma:public');
         echo $str;
     }
+
+    public function delelte(){
+        $id = I('aid');
+        M('application')->where(array('id'=>$id))->delete();
+        $this->redirect('index');
+    }
 }

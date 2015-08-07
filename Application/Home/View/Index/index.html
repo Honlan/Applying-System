@@ -165,7 +165,7 @@ footer.well p {
                                 <td>{$v.position}</td>
                                 <td>{$v.timestamp|date='Y-m-d H:i:s',###}</td>
                                 <td>{$v.dealtime|date='Y-m-d H:i:s',###}</td>
-                                <td><a href="{:U('Index/resend',array('aid'=>$v['id']))}">重发邮件</a></td>
+                                <td><a href="{:U('Index/resend',array('aid'=>$v['id']))}">重发邮件</a> <a href="{:U('Index/delete',array('aid'=>$v['id']))}">删除</a></td>
                             </tr>
                         </foreach>
                     </table>
@@ -181,6 +181,7 @@ footer.well p {
                             <th>职位</th>
                             <th>报名时间</th>
                             <th>处理时间</th>
+                            <th>操作</th>
                         </tr>
                         <foreach name="refuse" item='v'>
                             <tr>
@@ -191,6 +192,7 @@ footer.well p {
                                 <td>{$v.position}</td>
                                 <td>{$v.timestamp|date='Y-m-d H:i:s',###}</td>
                                 <td>{$v.dealtime|date='Y-m-d H:i:s',###}</td>
+                                <td><a href="{:U('Index/delete',array('aid'=>$v['id']))}">删除</a></td>
                             </tr>
                         </foreach>
                     </table>
