@@ -11,78 +11,210 @@
     <meta name='author' content='hlzhang' />
     <link rel='shortcut icon' href=''>
     <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
     <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="__PUBLIC__/js/jquery.onepage-scroll.js"></script>
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/onepage-scroll.css">
-    <style>
-    html {
-        height: 100%;
-    }
-    
-    body {
-        padding: 0;
-        margin: 0;
-        text-align: center;
-        position: relative;
-        height: 100%;
-    }
-    .onepage-pagination {
-        display: none;
-    }
-    
-    .wrapper {
-        height: 100% !important;
-        height: 100%;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    .main {
-        width: 100%;
-    }
-    
-    .main section {
-        overflow: hidden;
-    }
-    </style>
-    <script>
-    $(document).ready(function() {
-        $(".main").onepage_scroll({
-            sectionContainer: "section",
-            responsiveFallback: 600,
-            loop: true
-        });
-        $('.main button').click(function(){
-            moveDown();
-        });
-    });
-    </script>
 </head>
+<style>
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: SimHei;
+}
+
+.main {
+    min-width: 320px;
+    max-width: 600px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.banner {
+    width: 100%;
+}
+
+.content,
+.speaker,
+.about,
+.activity,
+.partner,
+.footer {
+    margin: 20px;
+}
+
+h1 {
+    font-size: 16px;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+li {
+    position: relative;
+    left: -20px;
+}
+
+p,
+li {
+    font-size: 12px;
+}
+
+.glyphicon {
+    margin-right: 10px
+}
+
+#en {
+    display: none;
+}
+
+</style>
 
 <body>
-    <div class="wrapper">
-        <div class="main">
-            <section class="page1">
-                <div class="page_container">
-                    <h1>page1</h1>
-                </div>
-            </section>
-            <section class="page2">
-                <div class="page_container">
-                    <h1>page2</h1>
-            </section>
-            <section class="page3">
-                <div class="page_container">
-                    <h1>page3</h1>
-                </div>
-            </section>
+    <div class="main" id="zh">
+        <div style="text-align:right;">
+            <a style="color:#333;margin-right:10px;font-size:10px" href="http://zhanghonglun.cn/sdo/Home/Html/index">在线浏览</a>
+            <span name="zh" class="lang" style="margin-right:10px;font-size:10px;cursor:pointer;">中文</span>
+            <span name="en" class="lang" style="font-size:10px;cursor:pointer;">English</span>
+        </div>
+        <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img class="banner" src="__PUBLIC__/img/banner.png"></a>
+        <div class="content">
+            <h1>设计+的时代来了！</h1>
+            <p>这是一个瞬息万变的时代。不久前还被津津乐道的互联网思维已经成为过去式，人们已经开始在互联网+的大潮中寻找机会。但还有一股力量正在悄然暗涌，已初露锋芒。</p>
+            <p style="color:#F31818;">这就是设计。</p>
+            <p>设计的力量到底有多大？！它能否掀起巨浪，引发整个商业全产业链的聚变？！</p>
+            <p style="color:#F31818;">如果你够大胆，够前沿，够远见。9月11日，我们一起来造就一个设计+的时代。</p>
+            <div style="text-align:center;">
+                <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img src="__PUBLIC__/img/button.png" style="width:80px;margin-top:10px;margin-bottom:10px;"></a>
+            </div>
+        </div>
+        <div class="speaker">
+            <h2>演讲嘉宾</h2>
+            <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img src="__PUBLIC__/img/img1.png" style="width:100%;"></a>
+        </div>
+        <div class="about">
+            <h2>活动主题：设计+X</h2>
+            <p><b>三大议题</b></p>
+            <ul>
+                <li>设计驱动行业变革</li>
+                <li>设计引领技术革新</li>
+                <li>设计的自我涅槃</li>
+            </ul>
+            <p>时间 9月11日 9:30-18:30</p>
+            <p>地点 上海市静安区常德路800号八佰秀</p>
+        </div>
+        <div class="activity">
+            <h2>活动流程</h2>
+            <ul>
+                <li>9:00-9:30 签到</li>
+                <li>9:30-11:00 嘉宾演讲（一）</li>
+                <li>11:00-12:00 现场互动——世界咖啡</li>
+                <li>12:00-13:00 午餐</li>
+                <li>13:00-15:30 嘉宾演讲（二）</li>
+                <li>15:30-16:00 现场活动——协同创新</li>
+                <li>16:00-17:20 2015成功设计大赛颁奖典礼</li>
+                <li>17:30-18:30 成功慈善拍卖会&鸡尾酒会</li>
+            </ul>
+        </div>
+        <div class="partner">
+            <h2>合作伙伴</h2>
+            <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img src="__PUBLIC__/img/img2.png" style="width:100%;"></a>
+        </div>
+        <div class="footer" style="position:relative;">
+            <p><b>成功设计平台</b></p>
+            <p><span class="glyphicon glyphicon-home"></span><a href="http://www.successfuldesign.org">www.successfuldesign.org</a>
+                <br><span class="glyphicon glyphicon-envelope"></span>info@designsuccess.cn
+                <br><span class="glyphicon glyphicon-phone-alt"></span>+86 21-5265 5662</p>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style" style="position:absolute;right:5px;bottom:0;">
+                <a class="jiathis_button_tsina"></a>
+                <a class="jiathis_button_tqq"></a>
+                <a class="jiathis_button_weixin"></a>
+                <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+        </div>
+    </div>
+    <div class="main" id="en">
+        <div style="text-align:right;">
+            <a style="color:#333;margin-right:10px;font-size:10px" href="">Online version</a>
+            <span name="zh" class="lang" style="margin-right:10px;font-size:10px;cursor:pointer;">中文</span>
+            <span name="en" class="lang" style="font-size:10px;cursor:pointer;">English</span>
+        </div>
+        <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img class="banner" src="__PUBLIC__/img/banner.png"></a>
+        <div class="content">
+            <h1>“Design+ age” is coming!</h1>
+            <p>Design is driving the changes of all industries. By leveraging the power of design, we can lead the transformation of the whole social and business landscape. On September 11th at the “Design Success Summit”, let’s build a “Design + age“ together.
+            </p>
+            <div style="text-align:center;">
+                <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img src="__PUBLIC__/img/buttonen.jpg" style="width:80px;margin-top:10px;margin-bottom:10px;"></a>
+            </div>
+        </div>
+        <div class="speaker">
+            <h2>Speakers</h2>
+            <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img src="__PUBLIC__/img/img1en.png" style="width:100%;"></a>
+        </div>
+        <div class="about">
+            <h2>Theme: Design+X=∞</h2>
+            <p><b>Topics</b></p>
+            <ul>
+                <li>Design empowers industry</li>
+                <li>Design leads technology</li>
+                <li>Design and its future</li>
+            </ul>
+            <p>Date & Time：September 11th 9:30-18:30</p>
+            <p>Location：800 Show (800 Changde Road, Jingan, Shangha)</p>
+        </div>
+        <div class="activity">
+            <h2>Schedule</h2>
+            <ul>
+                <li>09:00-09:30 Registration</li>
+                <li>09:30-11:00 Part 1: Speeches</li>
+                <li>11:00-12:00 Interaction—The World Café</li>
+                <li>12:00-13:00 Lunch</li>
+                <li>13:00-15:30 Part 2: Speeches</li>
+                <li>16:00-17:20 2015 Successful Design Awards Ceremony</li>
+                <li>17:30-18:30 Charity Auction & After Party</li>
+            </ul>
+        </div>
+        <div class="partner">
+            <h2>Partners</h2>
+            <a href="http://zhanghonglun.cn/sdo/Home/Form/index"><img src="__PUBLIC__/img/img2en.jpg" style="width:100%;"></a>
+        </div>
+        <div class="footer" style="position:relative;">
+            <p><b>Successful Design Organization</b></p>
+            <p><span class="glyphicon glyphicon-home"></span><a href="http://www.successfuldesign.org">www.successfuldesign.org</a>
+                <br><span class="glyphicon glyphicon-envelope"></span>info@designsuccess.cn
+                <br><span class="glyphicon glyphicon-phone-alt"></span>+86 21-5265 5662</p>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style" style="position:absolute;right:5px;bottom:0;">
+                <a class="jiathis_button_tsina"></a>
+                <a class="jiathis_button_tqq"></a>
+                <a class="jiathis_button_weixin"></a>
+                <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
         </div>
     </div>
 </body>
+<script>
+$(document).ready(function() {
+    $('.lang').click(function() {
+        console.log($(this).attr('name'));
+        if ($(this).attr('name') == 'zh') {
+            $('#zh').show();
+            $('#en').hide();
+            $('body').css('font-family', 'Simhei');
+        } else {
+            $('#zh').hide();
+            $('#en').show();
+            $('body').css('font-family', 'arial');
+        }
+    });
+});
+</script>
 
 </html>
