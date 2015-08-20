@@ -83,6 +83,10 @@ form #apply {
         		<div class="input-group-addon"><span class="glyphicon glyphicon-flag"></span></div>
         		<input type="text" class="form-control" name="position" placeholder="职位 Position">
             </div>
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-info-sign"></span></div>
+                <input type="text" class="form-control" name="other" placeholder="备注 Note">
+            </div>
             <span id="apply" class="btn btn-primary disabled">立即报名</span>
         </div>
     </form>
@@ -167,7 +171,8 @@ $(document).ready(function(){
                 mobile: $('form input[name="mobile"]').val(),
                 email: $('form input[name="email"]').val(),
                 company: $('form input[name="company"]').val(),
-                position: $('form input[name="position"]').val()
+                position: $('form input[name="position"]').val(),
+                other: $('form input[name="other"]').val()
             },
             dataType: 'json',
             error: function() {},
