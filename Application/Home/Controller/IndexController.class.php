@@ -151,7 +151,7 @@ class IndexController extends CommonController {
             array('position','职位'),
             array('other','备注'),
             array('timestamp','申请时间')); 
-        $xlsData = M('application')->where(array('admitted'=>2))->field('id,name,mobile,email,company,position,other,timestamp')->order('timestamp desc')->select();
+        $xlsData = M('application')->where(array('admitted'=>1))->field('id,name,mobile,email,company,position,other,timestamp')->order('timestamp desc')->select();
 
         $xlsTitle = iconv('utf-8', 'gb2312', $xlsName);//文件名称
         $fileName = date('YmdHis').'_passed';//or $xlsTitle 文件名称可根据自己情况设定
@@ -194,7 +194,7 @@ class IndexController extends CommonController {
             array('position','职位'),
             array('other','备注'),
             array('timestamp','申请时间')); 
-        $xlsData = M('application')->where(array('admitted'=>1))->field('id,name,mobile,email,company,position,other,timestamp')->order('timestamp desc')->select();
+        $xlsData = M('application')->where(array('admitted'=>2))->field('id,name,mobile,email,company,position,other,timestamp')->order('timestamp desc')->select();
 
         $xlsTitle = iconv('utf-8', 'gb2312', $xlsName);//文件名称
         $fileName = date('YmdHis').'_waiting';//or $xlsTitle 文件名称可根据自己情况设定
