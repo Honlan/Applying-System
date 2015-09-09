@@ -168,6 +168,9 @@ class IndexController extends CommonController {
           // Miscellaneous glyphs, UTF-8   
         for($i = 0; $i < $dataNum; $i++){
             for($j = 0; $j < $cellNum; $j++){
+                if ($j == 7) {
+                    $xlsData[$i][$xlsCell[$j][0]] = date('Y-m-d H:i:s', $xlsData[$i][$xlsCell[$j][0]]);  
+                }
                 $objPHPExcel->getActiveSheet(0)->setCellValue($cellName[$j].($i+2), $xlsData[$i][$xlsCell[$j][0]]);
             }             
         }  
@@ -185,7 +188,7 @@ class IndexController extends CommonController {
         $str = "序号,姓名,手机,邮箱,公司,职位,备注,申请时间\n";
         $str = iconv('utf-8', 'gb2312', $str);
         foreach ($data as $key => $value) {
-            $str .= iconv('utf-8', 'gb2312', $value['id']).",".iconv('utf-8', 'gb2312', $value['name']).",".iconv('utf-8', 'gb2312', $value['mobile']).",".iconv('utf-8', 'gb2312', $value['email']).",".iconv('utf-8', 'gb2312', $value['company']).",".iconv('utf-8', 'gb2312', $value['position']).",".iconv('utf-8', 'gb2312', $value['other']).",".iconv('utf-8', 'gb2312', $value['timestamp'])."\n";
+            $str .= iconv('utf-8', 'gb2312', $value['id']).",".iconv('utf-8', 'gb2312', $value['name']).",".iconv('utf-8', 'gb2312', $value['mobile']).",".iconv('utf-8', 'gb2312', $value['email']).",".iconv('utf-8', 'gb2312', $value['company']).",".iconv('utf-8', 'gb2312', $value['position']).",".iconv('utf-8', 'gb2312', $value['other']).",".date('Y-m-d H:i:s',iconv('utf-8', 'gb2312', $value['timestamp']))."\n";
         }
         $filename = date('YmdHis').'.csv';
         header("Content-type:text/csv");   
