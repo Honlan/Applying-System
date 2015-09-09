@@ -149,8 +149,9 @@ class IndexController extends CommonController {
             array('email','邮箱'),
             array('company','公司'),
             array('position','职位'),
-            array('other','备注')); 
-        $xlsData = M('application')->where(array('admitted'=>1))->field('id,name,mobile,email,company,position,other')->select();
+            array('other','备注'),
+            array('timestamp','申请时间')); 
+        $xlsData = M('application')->where(array('admitted'=>1))->field('id,name,mobile,email,company,position,other,timestamp')->order('timestamp desc')->select();
 
         $xlsTitle = iconv('utf-8', 'gb2312', $xlsName);//文件名称
         $fileName = date('YmdHis');//or $xlsTitle 文件名称可根据自己情况设定
@@ -180,11 +181,11 @@ class IndexController extends CommonController {
     }
 
     public function exportCsv(){
-        $data = M('application')->where(array('admitted'=>1))->field('id,name,mobile,email,company,position,other')->select();
-        $str = "序号,姓名,手机,邮箱,公司,职位,备注\n";
+        $data = M('application')->where(array('admitted'=>1))->field('id,name,mobile,email,company,position,other,timestamp')->order('timestamp desc')->select();
+        $str = "序号,姓名,手机,邮箱,公司,职位,备注,申请时间\n";
         $str = iconv('utf-8', 'gb2312', $str);
         foreach ($data as $key => $value) {
-            $str .= iconv('utf-8', 'gb2312', $value['id']).",".iconv('utf-8', 'gb2312', $value['name']).",".iconv('utf-8', 'gb2312', $value['mobile']).",".iconv('utf-8', 'gb2312', $value['email']).",".iconv('utf-8', 'gb2312', $value['company']).",".iconv('utf-8', 'gb2312', $value['position']).",".iconv('utf-8', 'gb2312', $value['other'])."\n";
+            $str .= iconv('utf-8', 'gb2312', $value['id']).",".iconv('utf-8', 'gb2312', $value['name']).",".iconv('utf-8', 'gb2312', $value['mobile']).",".iconv('utf-8', 'gb2312', $value['email']).",".iconv('utf-8', 'gb2312', $value['company']).",".iconv('utf-8', 'gb2312', $value['position']).",".iconv('utf-8', 'gb2312', $value['other']).",".iconv('utf-8', 'gb2312', $value['timestamp'])."\n";
         }
         $filename = date('YmdHis').'.csv';
         header("Content-type:text/csv");   
